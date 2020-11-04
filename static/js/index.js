@@ -13,13 +13,8 @@ $(function() {
 			result[i] = result[i].split("、");
 
 			rule_list[i] = result[i];
-			// console.log("s");
-			console.log(rule_list[i]);
-			// console.log(result[i]);
 		}
-		});
-
-	console.log("a");
+	});
 
 	//判断输入，根据输入再输出结果
 	$('#submit-btn').on('click',function() {
@@ -31,44 +26,7 @@ $(function() {
 			if (checkbox.is(':checked')) {
 				cur_true.push(checkbox.val());
 			}
-		}
 
-		//规则库
-		// var rule_list = [];
-
-		// $.get("/date",function(data){
-		// 	result = data.split(",");
-		// 	for (var i = 0;i < result.length;i++){
-		// 		result[i] = result[i].replace("[","");
-		// 		result[i] = result[i].replace("'","");
-		// 		result[i] = result[i].replace("'","");
-		// 		result[i] = result[i].replace(" ","");
-		// 		result[i] = result[i].replace("]","");
-		// 		result[i] = result[i].split("、");
-
-		// 		rule_list[i] = result[i];
-		// 		// console.log("s");
-		// 		console.log(rule_list[i]);
-		// 		// console.log(result[i]);
-		// 	}
-		// 	});
-
-		// console.log("s");
-		// rule_list[0] = ['有毛发','哺乳动物'];
-		// rule_list[1] = ['有奶','哺乳动物'];
-		// rule_list[2] = ['有羽毛','是鸟'];
-		// rule_list[3] = ['会飞','会下蛋','是鸟'];
-		// rule_list[4] = ['吃肉','肉食动物'];
-		// rule_list[5] = ['有犬齿','有爪','眼盯前方','肉食动物'];
-		// rule_list[6] = ['哺乳动物','有蹄','有蹄动物'];
-		// rule_list[7] = ['哺乳动物','嚼反刍动物','有蹄动物'];
-		// rule_list[8] = ['哺乳动物','肉食动物','黄褐色','身上有暗斑点','金钱豹'];
-		// rule_list[9] = ['哺乳动物','肉食动物','黄褐色','有黑色条纹','虎'];
-		// rule_list[10] = ['有蹄动物','有长脖子','有长腿','身上有暗斑点','长颈鹿'];
-		// rule_list[11] = ['有蹄动物','有黑色条纹','斑马'];
-		// rule_list[12] = ['是鸟','有长脖子','有长腿','不会飞','鸵鸟'];
-		// rule_list[13] = ['是鸟','会游泳','不会飞','有黑白两色','企鹅'];
-		// rule_list[14] = ['是鸟','善飞','信天翁'];
 
 		//待测试规则表
 		var wait_list = [];
@@ -100,9 +58,11 @@ $(function() {
 			}
 
 			var child_cur_true_lenght = cur_true.length;
+			console.log(cur_true);
 				
 			if((child_cur_true_lenght == par_cur_true_length) || !wait_list.length) {
-				if (cur_true[child_cur_true_lenght-1] == '金钱豹' || cur_true[child_cur_true_lenght-1] == '虎' || cur_true[child_cur_true_lenght-1] == '长颈鹿' || cur_true[child_cur_true_lenght-1] == '斑马' || cur_true[child_cur_true_lenght-1] == '鸵鸟' || cur_true[child_cur_true_lenght-1] == '企鹅' || cur_true[child_cur_true_lenght-1] == '信天翁') {
+				if (cur_true[child_cur_true_lenght-1] != ""){
+				// if (cur_true[child_cur_true_lenght-1] == '金钱豹' || cur_true[child_cur_true_lenght-1] == '虎' || cur_true[child_cur_true_lenght-1] == '长颈鹿' || cur_true[child_cur_true_lenght-1] == '斑马' || cur_true[child_cur_true_lenght-1] == '鸵鸟' || cur_true[child_cur_true_lenght-1] == '企鹅' || cur_true[child_cur_true_lenght-1] == '信天翁') {
 					$('#result').html(cur_true[child_cur_true_lenght-1]);
 				} else {
 					$('#result').html('请输入再详细点的信息');
@@ -112,10 +72,10 @@ $(function() {
 				reasoningPeriod(cur_true,wait_list,[]);
 			}
 		}
+	}
+
+		$("#flip").click(function(){
+	    	$("#panel").slideToggle("slow");
+	  	})
 	})
-
-	$("#flip").click(function(){
-    	$("#panel").slideToggle("slow");
-  	});
-
 })
